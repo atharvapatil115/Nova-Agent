@@ -1,7 +1,9 @@
 import asyncio
 
 from app.agent.agent import MailAgent
+from dotenv import load_dotenv
 
+load_dotenv()
 
 async def main():
 

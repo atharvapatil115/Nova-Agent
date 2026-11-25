@@ -10,13 +10,11 @@ class WakeWordListener:
     def __init__(
         self,
         wake_word="hey_jarvis",
-        threshold=0.5,
+        threshold=0.2,
     ):
         self.wake_word = wake_word
         self.threshold = threshold
-        self.model = Model(
-            wakeword_models=[wake_word]
-        )
+        self.model = Model()
 
     def wait_for_wake(self):
 
@@ -48,6 +46,8 @@ class WakeWordListener:
                 self.wake_word,
                 0.0
             )
+
+            print(f"\rHey Jarvis score: {score:.3f}", end="", flush=True)
 
             if score >= self.threshold:
                 wake_detected = True
